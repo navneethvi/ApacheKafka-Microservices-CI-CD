@@ -16,4 +16,12 @@ build:
         manual:
           - dest: .
             src: 'src/**/*.js'
+    - image: navaneethvinod/product-service
+      context: product-service
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: 'src/**/*.js'
   

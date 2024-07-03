@@ -17,3 +17,11 @@ spec:
             name: user-svc
             port:
               number: 3001
+      - pathType: ImplementationSpecific
+        path: "/api/products/(.*)"
+        backend:
+          service:
+            name: product-svc
+            port:
+              number: 3002  
+              

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-mongo-deployment
+spec:
+  selector:
+    matchLabels:
+      app: product-mongo
+  template:
+    metadata:
+      labels:
+        app: product-mongo
+    spec:
+      containers:
+      - name: product-mongo-deployment
+        image: mongo
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-mongo-svc
+spec:
+  selector:
+    app: product-mongo
+  ports:
+  - port: 27017
+    targetPort: 27017
+

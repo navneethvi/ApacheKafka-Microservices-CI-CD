@@ -5,7 +5,7 @@ const registerUser = async (username, email, password, repository, userService) 
         const user = await repository.userExist(email)
         if(!user){
             console.log("Success");
-            const hashedPassword = await repository.bcryptPassword(password)
+            const hashedPassword = await userService.bcryptPassword(password)
             const userDetails = userData(username, email, hashedPassword)
             const createUser = await repository.createUser(userDetails)
             const registeredUser = {

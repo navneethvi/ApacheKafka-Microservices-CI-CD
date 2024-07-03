@@ -6,7 +6,7 @@ import userServiceInt from '../../../../application/services/user/userServiceInt
 
 const userRouter = (express) => {
     const router = express.Router()
-    const controller = userController(userRepositoryInt, userRepositoryImp, userServiceInt, userRepositoryImp)
+    const controller = userController(userRepositoryInt, userRepositoryImp, userServiceInt, userServiceImp)
     router.route('/register').post(controller.createUser)
     return router
 }

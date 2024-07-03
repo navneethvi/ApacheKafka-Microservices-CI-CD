@@ -8,7 +8,7 @@ const userController = (
   userServiceImp
 ) => {
   const dbRepository = userRepositoryInt(userRepositoryImp());
-  const userService = userRepositoryInt(userRepositoryImp());
+  const userService = userServiceInt(userServiceImp());
 
   const createUser = async (req, res) => {
     console.log("heree at createuser controller");

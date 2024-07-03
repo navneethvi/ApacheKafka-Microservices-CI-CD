@@ -1,5 +1,5 @@
 export default {
-    port : 3000,
+    port : 3001,
     mongo: {
         uri : 'mongodb://user-mongo-svc:27017/clean-user'
     },

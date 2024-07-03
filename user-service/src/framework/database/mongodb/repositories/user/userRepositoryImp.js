@@ -9,8 +9,15 @@ const userRepositoryImp = () => {
             email : user?.getEmail(),
             password : user?.getPassword()
         })
-        console.log("User in userRepoImp : ", createUser);
-        return createUser.save()
+        console.log("User in userRepoImp : ", newUser);
+        try {
+            const savedUser = await newUser.save();
+            console.log("Saved user:", savedUser);
+            return savedUser;
+        } catch (error) {
+            console.error("Error saving user:", error);
+            throw error;
+        }
     }
     return {
         userExist,

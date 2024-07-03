@@ -1,5 +1,5 @@
-// import registerUser from "../../../applications/usecases/user/register.js";
 import registerUser from "../../../application/usecases/user/register.js";
+import loginUser from "../../../application/usecases/user/login.js";
 
 const userController = (
   userRepositoryInt,
@@ -7,8 +7,8 @@ const userController = (
   userServiceInt,
   userServiceImp
 ) => {
-  const dbRepository = userRepositoryInt(userRepositoryImp());
-  const userService = userServiceInt(userServiceImp());
+  const repositories = userRepositoryInt(userRepositoryImp());
+  const services = userServiceInt(userServiceImp());
 
   const createUser = async (req, res) => {
     console.log("heree at createuser controller");
@@ -19,19 +19,34 @@ const userController = (
         username,
         email,
         password,
-        dbRepository,
-        userService
+        repositories,
+        services
       );
       console.log("response is here at usercreate controller : ", response);
-      res.status(200).json(response)
+      res.status(200).json(response);
     } catch (error) {
       res.status(500).json({ error: "Error in createUser controller" });
     }
   };
 
+  const login = async (req, res) => {
+    console.log("heree at loginuser controller");
+    console.log(req.body);
+    const { email, password } = req.body;
+    try {
+      console.log(email, password);
+      const response = await loginUser(email, password, repositories, services);
+      console.log(response, "response coming controller");
+      res.status(200).json(response)
+    } catch (error) {
+      res.status(500).json({ error: "Error in login controller" });
+    }
+  };
+
   return {
-    createUser
-  }
+    createUser,
+    login,
+  };
 };
 
-export default userController
+export default userController;

@@ -9,4 +9,4 @@ const userRepositoryInt = (repositories) => {
 }
 
 export default userRepositoryInt
-
+    

@@ -1,7 +1,8 @@
 import User from "../../models/userModel/userSchema.js";
 
 const userRepositoryImp = () => {
-    const userExist = async (email) => await User.findOne({email : email})
+
+    const userExist = async (email) =>  await User.findOne({email})
 
     const createUser = async (user) => {
         const newUser = await new User({

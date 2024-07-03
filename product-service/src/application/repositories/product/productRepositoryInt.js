@@ -1,8 +1,10 @@
 const productRepositoryInt = (repositories) => {
+  const productExist = (productName) => repositories.productExist(productName)
   const addProduct = (productData) => repositories.addProduct(productData);
 
   return {
-    addProduct,
+    productExist,
+    addProduct
   };
 };
 

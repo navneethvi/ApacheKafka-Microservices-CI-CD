@@ -1,14 +1,17 @@
 import Product from "../models/productModel/productSchema.js";
 
 const productRepositoryImp = () => {
+
+  const productExist = async (productName) => Product.findOne({productName})
+
   const addProduct = async (productData) => {
     try {
       const product = new Product({
-        productName: productData?.productName,
-        category: productData?.category,
-        price: productData?.price,
-        description: productData?.description,
-        image: productData?.image,
+        productName: productData?.getProductName(),
+        category: productData?.getCategory(),
+        price: productData?.getPrice(),
+        description: productData?.getDescription(),
+        image: productData?.getImage(),
       });
       const savedProduct = await product.save();
       return savedProduct;
@@ -19,6 +22,7 @@ const productRepositoryImp = () => {
   };
 
   return {
+    productExist,
     addProduct
   }
 };

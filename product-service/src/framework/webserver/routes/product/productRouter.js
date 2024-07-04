@@ -14,6 +14,7 @@ const productRouter = (express) => {
   );
   router.route("/addProduct").post(controller.addProduct);
   router.route("/getProducts").get(controller.getProduct)
+  router.route("/productDetails/:id").get(controller.getProductDetail)
   return router;
 };
 

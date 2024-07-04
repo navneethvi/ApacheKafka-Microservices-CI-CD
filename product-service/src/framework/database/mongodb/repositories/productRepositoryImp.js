@@ -23,10 +23,13 @@ const productRepositoryImp = () => {
 
   const getAllProducts = async () => Product.find({})
 
+  const productDetails = async (productId) => await Product.findOne({_id : productId})
+
   return {
     productExist,
     addProduct,
-    getAllProducts
+    getAllProducts,
+    productDetails
   }
 };
 

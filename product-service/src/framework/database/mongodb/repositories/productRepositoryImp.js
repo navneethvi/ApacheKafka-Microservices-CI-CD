@@ -21,9 +21,12 @@ const productRepositoryImp = () => {
     }
   };
 
+  const getAllProducts = async () => Product.find({})
+
   return {
     productExist,
-    addProduct
+    addProduct,
+    getAllProducts
   }
 };
 

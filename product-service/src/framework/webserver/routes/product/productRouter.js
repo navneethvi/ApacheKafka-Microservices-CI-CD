@@ -13,6 +13,7 @@ const productRouter = (express) => {
     productServiceImp
   );
   router.route("/addProduct").post(controller.addProduct);
+  router.route("/getProducts").get(controller.getProduct)
   return router;
 };
 

@@ -6,8 +6,7 @@ const addedProduct = async (
   price,
   description,
   image,
-  repositories,
-  services
+  repositories
 ) => {
   try {
     const productExists = await repositories.productExist(productName);
@@ -29,7 +28,7 @@ const addedProduct = async (
     );
 
     const newProduct = await repositories.addProduct(productdata);
-    
+
     return {
       status: true,
       productData: newProduct,

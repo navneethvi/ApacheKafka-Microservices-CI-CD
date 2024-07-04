@@ -16,8 +16,10 @@ const userServiceImp = () => {
     return accessToken;
   };
 
-  const comparePassword = async (password, userPassword) =>
-    bcrypjs.compare(password, userPassword);
+  const comparePassword = async (password, userPassword) => {
+    console.log("pass", password,"===============x", userPassword);
+    return bcrypjs.compare(password, userPassword);
+  };
 
   return {
     bcryptPassword,

@@ -7,9 +7,10 @@ const loginUser = async (email, password, repositories, services) => {
       console.log("User not found");
       return { status: false, message: "Invalid Credentials!!!" };
     }
-    console.log(`User found: ${user.email}`);
+    console.log(`User found: `, user);
 
     const isPassword = await services.comparePassword(password, user.password);
+    console.log(isPassword, "true");
     if (!isPassword) {
       console.log("Password is invalid");
       return { status: false, message: "Password Invalid!!!" };

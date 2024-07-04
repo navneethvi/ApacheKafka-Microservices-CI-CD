@@ -5,7 +5,7 @@ const userRepositoryImp = () => {
     const userExist = async (email) =>  await User.findOne({email})
 
     const createUser = async (user) => {
-        const newUser = await new User({
+        const newUser =  new User({
             username : user?.getUsername(),
             email : user?.getEmail(),
             password : user?.getPassword()

@@ -21,11 +21,7 @@ const registerUser = async (
     const hashedPassword = await services.bcryptPassword(password);
     console.log("Password hashed successfully");
 
-    const userDetails = {
-      username,
-      email,
-      password: hashedPassword,
-    };
+    const userDetails = userData(username, email, hashedPassword)
 
     const createdUser = await repositories.createUser(userDetails);
     console.log("User created successfully");

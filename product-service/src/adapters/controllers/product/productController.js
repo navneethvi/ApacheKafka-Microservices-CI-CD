@@ -1,6 +1,7 @@
 import addedProduct from "../../../application/usecases/product/addProduct.js";
 import getProducts from "../../../application/usecases/product/getProducts.js";
 import getProductDetails from "../../../application/usecases/product/getProductDetails.js";
+import orderProducts from "../../../application/usecases/product/orderProducts.js";
 
 const productController = (
   productRepositoryInt,
@@ -53,10 +54,23 @@ const productController = (
     }
   };
 
+  const getOrderedProducts = async (req, res) => {
+    try {
+        const {productId, userId, address} = req.body
+        const response = await orderProducts(productId, userId, address, repositories, services)
+        if(response) res.status(200).send(response)
+    } catch (error) {
+        res
+        .status(500)
+        .send({ message: "Error while getting order datas !!!" });
+    }
+  }
+
   return {
     addProduct,
     getProduct,
-    getProductDetail
+    getProductDetail,
+    getOrderedProducts
   };
 };
 

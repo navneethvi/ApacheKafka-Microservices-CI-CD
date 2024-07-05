@@ -1,9 +1,6 @@
-apiVersion: skaffold/v2alpha3
+apiVersion: skaffold/v3
 kind: Config
-deploy:
-  kubectl:
-    manifests:
-     - ./infra/k8s/*
+
 build:
   local:
     push: false
@@ -14,14 +11,54 @@ build:
         dockerfile: Dockerfile
       sync:
         manual:
-          - dest: .
-            src: 'src/**/*.js'
+          - src: 'src/**/*.js'
+            dest: .
+
     - image: navaneethvinod/product-service
       context: product-service
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
-          - dest: .
-            src: 'src/**/*.js'
-  
+          - src: 'src/**/*.js'
+            dest: .
+    - image: navaneethvinod/order-service
+      context: order-service
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.js'
+            dest: .
+
+manifests:
+  rawYaml:
+    - ./infra/k8s/*
+
+# apiVersion: skaffold/v3
+# kind: Config
+# build:
+#   artifacts:
+#     - image: navaneethvinod/user-service
+#       context: ./user-service
+#       sync:
+#         manual:
+#           - src: ./src/*/.js
+#             dest: .
+#       docker:
+#         dockerfile: Dockerfile
+#     - image: navaneethvinod/product-service
+#       context: ./product-service
+#       sync:
+#         manual:
+#           - src: ./src/*/.js
+#             dest: .
+#       docker:
+#         dockerfile: Dockerfile
+#   local:
+#     push: false
+# manifests:
+#   rawYaml:
+#     - ./infra/k8s/*
+# deploy: 
+#   kubectl: {}

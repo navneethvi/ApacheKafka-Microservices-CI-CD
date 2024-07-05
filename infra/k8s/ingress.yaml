@@ -21,7 +21,14 @@ spec:
         path: "/api/products/(.*)"
         backend:
           service:
-            name: product-svc
+            name: product-svc 
             port:
               number: 3002  
+      - pathType: ImplementationSpecific
+        path: "/api/orders/(.*)"
+        backend:
+          service:
+            name: order-svc 
+            port:
+              number: 3003  
               

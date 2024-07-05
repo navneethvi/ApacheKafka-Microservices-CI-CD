@@ -7,5 +7,5 @@ const productData = (productName, category, price, description, image) => {
         getImage : () => image
     }
 }
-
+   
 export default productData

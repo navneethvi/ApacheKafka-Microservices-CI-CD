@@ -28,7 +28,7 @@ spec:
         path: "/api/orders/(.*)"
         backend:
           service:
-            name: order-svc 
+            name: order-svc
             port:
-              number: 3003  
+              number: 3003
               

@@ -5,7 +5,7 @@ mongoose.set("strictQuery", true);
 const connectDB = async (config) => {
   try {
     await mongoose.connect(config.mongo.uri);
-    console.log("User Service DB Connected");
+    console.log("Order Service DB Connected");
   } catch (error) {
     console.error("Database connection failed:", error);
     process.exit(1);

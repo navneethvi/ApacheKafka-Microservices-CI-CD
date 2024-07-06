@@ -16,8 +16,10 @@ connectDB(config)
 
 expressConfig(app)
 
+serverConfig(app)
+
 routes(app, express)
 
-serverConfig(server, config)
+serverConfig(server, config).startServer()
 
 await orderConsumer()

@@ -9,11 +9,21 @@ const orderRepositoryImp = () => {
       totalPrice: total,
     });
     const savedOrder = await newOrder.save();
-    return newOrder;
+    return savedOrder;
   };
+
+  const getOrderDetails = async () => {
+    try {
+      const orders = await Order.find({})
+      return orders
+    } catch (error) {
+      console.log("Error in fetching order details from repo imp : ", error.message);
+    }
+  }
 
   return {
     createOrder,
+    getOrderDetails
   };
 };
 

@@ -10,25 +10,11 @@ spec:
   - host: unni.com
     http:
       paths:
-      - pathType: ImplementationSpecific
-        path: "/api/users/(.*)"
+      - pathType: Prefix
+        path: /api/
         backend:
           service:
-            name: user-svc
+            name: api-gateway-svc
             port:
-              number: 3001
-      - pathType: ImplementationSpecific
-        path: "/api/products/(.*)"
-        backend:
-          service:
-            name: product-svc 
-            port:
-              number: 3002  
-      - pathType: ImplementationSpecific
-        path: "/api/orders/(.*)"
-        backend:
-          service:
-            name: order-svc
-            port:
-              number: 3003
-              
+              number: 3000
+     

@@ -30,6 +30,14 @@ build:
         manual:
           - src: 'src/**/*.js'
             dest: .
+    - image: navaneethvinod/api-gateway
+      context: api-gateway
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.js'
+            dest: .
 
 manifests:
   rawYaml:
